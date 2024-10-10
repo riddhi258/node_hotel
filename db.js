@@ -3,11 +3,7 @@ const mongoose = require ('mongoose');
 const mongoURL = 'mongodb://localhost:27017/hotels';
 
 //set up to connect mongodb
-mongoose.connect(mongoURL,{
-    useNewUrlparser: true, // insure that work with new url
-    useUnifiedTopology : true
-
-})
+mongoose.connect(mongoURL)
 // get default connection
 const db=mongoose.connection;
 // define event listner for database connection
