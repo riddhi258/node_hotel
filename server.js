@@ -4,11 +4,21 @@ const app = express();
 const db = require ('./db');
 const Person =require ('./models/person');
 const menuItem = require('./models/menuItem');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 
 const bodyParser=require ('body-parser');
 app.use(bodyParser.json())//req body
+app.use(new LocalStrategy(async(USERNAME,password,done)=>{
+  try{
+      console.log('recieved credentials:',USERNAME,password);
+      const user = Person.findOne({username:USERNAME});
+  }
+  catch(err){
 
+  }
+}))
 
 app.get('/', function (req, res) {
   res.send('wlecom to our Hotel ')
