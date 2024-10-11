@@ -4,14 +4,18 @@ const app = express();
 const db = require ('./db');
 const Person =require ('./models/person');
 const menuItem = require('./models/menuItem');
-
+const passport = require ('./auth');
 
 
 const bodyParser=require ('body-parser');
 app.use(bodyParser.json())//req body
 
 
-app.get('/', function(req,res)  {
+
+app.use(passport.initialize());
+const LocalAuthMiddleWare= passport.authenticate('local',{session:false})
+
+app.get('/', LocalAuthMiddleWare, function(req,res)  {
   res.send('wlecom to our Hotel ')
 })
 /*app.get('/chai', function (req, res) {

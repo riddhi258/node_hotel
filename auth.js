@@ -19,6 +19,5 @@ passport.use(new LocalStrategy(async (username, password, done) => {
     }
   }));
   
-  
-  app.use(passport.initialize());
-  
+
+  module.exports=passport
